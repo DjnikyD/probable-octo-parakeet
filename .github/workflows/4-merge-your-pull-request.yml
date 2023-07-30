@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - id: get_step
+      - id: 4
         run: |
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
@@ -33,7 +33,7 @@ jobs:
 
   on_merge_your_pull_request:
     name: On merge your pull request
-    needs: get_current_step
+    needs: 
 
     # We will only run this action when:
     # 1. This repository isn't the template repository.
@@ -54,11 +54,12 @@ jobs:
         with:
           fetch-depth: 0 # Let's get all the branches.
 
-      # In README.md, switch step 4 for step X.
-      - name: Update to step X
+      # In README.md, switch step 4 for step X. 
+      - name: Step 4
         uses: skills/action-update-step@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{   
           from_step: 4
           to_step: X
           branch_name: my-first-branch
+          
